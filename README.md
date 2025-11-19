@@ -82,7 +82,10 @@ You can switch FLAN-T5 to any local model supported by `transformers`, including
 
 * DistilGPT2
 * GPT-J
-* Dolly
+* Dollyhttps://drive.google.com/file/d/1PFOTmRx_fBX7G01T1f7659sXgE4ekXZ8/view?usp=sharing
 * Mistral (via local pipeline)
 
+## Output
+
+https://drive.google.com/file/d/1PFOTmRx_fBX7G01T1f7659sXgE4ekXZ8/view?usp=sharing
 
