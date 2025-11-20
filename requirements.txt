@@ -1,0 +1,6 @@
+torch
+faiss-cpu
+transformers
+sentence-transformers
+wikipedia
+arxiv
