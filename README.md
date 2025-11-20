@@ -1,91 +1,85 @@
 # Local RAG Research Analyst
 
-A fully local research assistant that performs document retrieval and generates research-backed answers without requiring the internet or API keys.
+A privacy-first **Retrieval-Augmented Generation (RAG)** system that autonomously conducts research using academic sources and generates answers locally.
 
-This system collects information from Wikipedia and ArXiv, stores it in a FAISS vector database, and uses a local FLAN-T5 model to generate grounded research responses. It also includes a Streamlit frontend for a clean UI experience.
-
----
-
-## 🚀 Features
-
-* **Fully Offline Option Available**
-* **No API Keys Required**
-* **Retrieves Real Research Data**
-
-  * Wikipedia summaries
-  * ArXiv paper abstracts
-* **FAISS Vector Database**
-
-  * Stores embeddings
-  * Enables semantic retrieval
-* **Local LLM**
-
-  * Uses FLAN-T5 Base for generation
-  * No external model calls
-* **Streamlit Frontend**
-
-  * Simple UI
-  * Input → Research → Final Answer displayed
+Unlike standard API-wrappers, this project runs the **Embedding Model** and **LLM** entirely on your local CPU, ensuring zero data privacy risks and no API costs.
 
 ---
 
-## 🧩 Tech Stack
+## 🚀 Key Features
 
-| Component        | Technology                         |
-| ---------------- | ---------------------------------- |
-| Language         | Python                             |
-| Embeddings       | SentenceTransformer (MiniLM-L6-v2) |
-| Vector DB        | FAISS                              |
-| LLM              | FLAN-T5                            |
-| Research Sources | Wikipedia + ArXiv                  |
-| Frontend         | Streamlit                          |
+* **Hybrid Architecture:** Fetches real-time data from the web (ArXiv/Wikipedia) but performs all processing and text generation locally.
+* **Zero-Cost Inference:** Uses `google/flan-t5-base` for generation, removing the need for OpenAI/Anthropic API keys.
+* **Vector Search:** Implements **FAISS** and **SentenceTransformers** (`all-MiniLM-L6-v2`) for semantic similarity search.
+* **Self-Building Knowledge Base:** Every query automatically updates the local vector index, making the agent smarter over time.
+* **Interactive UI:** Built with **Streamlit** for an easy-to-use research dashboard.
+
+---
+
+## 🛠️ Tech Stack
+
+| Component | Technology | Role |
+| :--- | :--- | :--- |
+| **Language** | Python | Core Logic |
+| **LLM** | Google FLAN-T5 | Local Text Generation |
+| **Embeddings** | SentenceTransformer | `all-MiniLM-L6-v2` (384 dim) |
+| **Vector DB** | FAISS | High-performance similarity search |
+| **Data Sources** | `arxiv` + `wikipedia` | Real-time academic retrieval |
+| **Frontend** | Streamlit | User Interface |
+
+---
 
 ## 🧠 How It Works
 
-1. **User enters a research query**
-2. System searches:
-
-   * Wikipedia (summary)
-   * ArXiv (latest relevant paper)
-3. Retrieved text is:
-
-   * Embedded using MiniLM
-   * Stored into FAISS
-4. For each new question:
-
-   * FAISS returns the most relevant documents
-5. Local FLAN-T5 generates the final answer using:
-
-   ```
-   "Answer using only the research provided"
-   ```
-
-Everything can run offline if online search is disabled.
+1.  **User Input:** You ask a question (e.g., *"Role of blockchain in supply chain"*).
+2.  **Data Aggregation:** The agent searches **Wikipedia** (general context) and **ArXiv** (technical papers).
+3.  **Vectorization:** Text chunks are converted into embeddings using `SentenceTransformer`.
+4.  **Indexing:** Embeddings are stored in a local **FAISS** index (`vector.index`).
+5.  **Retrieval:** The system searches the vector DB for the top 4 chunks relevant to the query.
+6.  **Generation:** The retrieved context is fed into **FLAN-T5**, which synthesizes a final answer strictly based on the research.
 
 ---
 
-## 🧪 Sample Prompts
+## 💻 Installation & Run
 
-Try:
+1.  **Clone the Repository**
+    ```bash
+    git clone [https://github.com/yourusername/local-rag-agent.git](https://github.com/yourusername/local-rag-agent.git)
+    cd local-rag-agent
+    ```
 
-* Impact of AI in finance
-* Role of blockchain in supply chain
-* Applications of quantum computing in drug discovery
-* Latest research on cybersecurity attacks
-* Machine learning in space exploration
+2.  **Install Dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Run the App**
+    ```bash
+    streamlit run app.py
+    ```
 
 ---
 
-## 📌 Model Replacement (Optional)
+## 🧪 Sample Research Queries
+Try these to test the RAG capabilities:
+* *"Zero-day vulnerability detection mechanisms"*
+* *"Impact of Quantum Computing on Cryptography"*
+* *"Recent advancements in Transformer architectures"*
+* *"Role of AI in early cancer detection"*
 
-You can switch FLAN-T5 to any local model supported by `transformers`, including:
+---
 
-* DistilGPT2
-* GPT-J
-* Dolly
-* Mistral (via local pipeline)
+## 🔮 Future Improvements
+* [ ] Add support for **Llama-3-8B** (quantized) for better reasoning.
+* [ ] Implement **PDF Upload** for "Chat with your Data" functionality.
+* [ ] Add citation sources (links to papers) in the final response.
+
 
 ## Output
 
 https://drive.google.com/file/d/1PFOTmRx_fBX7G01T1f7659sXgE4ekXZ8/view?usp=sharing
+---
+*Created by Vidhi Gandhi*
+---
+
 
