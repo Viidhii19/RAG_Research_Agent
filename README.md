@@ -71,13 +71,14 @@ Try these to test the RAG capabilities:
 
 ## 🔮 Future Improvements
 * [ ] Add support for **Llama-3-8B** (quantized) for better reasoning.
-* [ ] Implement **PDF Upload** for "Chat with your Data" functionality.
+* [ ] Implement **PDF Upload** 
 * [ ] Add citation sources (links to papers) in the final response.
 
 
 ## Output
 
 https://drive.google.com/file/d/1PFOTmRx_fBX7G01T1f7659sXgE4ekXZ8/view?usp=sharing
+
 ---
 *Created by Vidhi Gandhi*
 ---
