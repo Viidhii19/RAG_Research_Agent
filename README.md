@@ -79,8 +79,4 @@ Try these to test the RAG capabilities:
 
 https://drive.google.com/file/d/1PFOTmRx_fBX7G01T1f7659sXgE4ekXZ8/view?usp=sharing
 
----
-*Created by Vidhi Gandhi*
----
-
 
